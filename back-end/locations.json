@@ -1,0 +1,17 @@
+[
+  {
+    "lat": 48.2374,
+    "lng": 11,
+    "draggable": true
+  },
+  {
+    "lat": 48.5374,
+    "lng": 11.123,
+    "draggable": false
+  },
+  {
+    "lat": 48.8374,
+    "lng": 11.5,
+    "draggable": true
+  }
+]

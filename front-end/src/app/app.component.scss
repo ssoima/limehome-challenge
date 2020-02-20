@@ -1,0 +1,100 @@
+.topnav {
+    display: flex;
+    align-items: center;
+    background-color: #EBEAE6;
+    overflow: hidden;
+    height: 50px;
+  }
+
+.topnav img {
+  float: left;
+  height: 20px;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.menu {
+  background: #222;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  z-index: 4;
+  position: fixed;
+  left: 0;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 250ms ease-in-out;
+  transition: -webkit-transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out,-webkit-transform 250ms ease-in-out;
+}
+
+
+.menuIcon {
+  margin-left: auto;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 15px;
+
+  .bar1, .bar2 {
+    width: 20px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.4s;
+  }
+
+  /* Rotate first bar */
+  &.change .bar1 {
+    transform: rotate(-90deg) translate(-3px, 3px) ;
+  }
+
+  /* Rotate last bar */
+  &.change .bar2 {
+    transform: rotate(90deg) translate(-3px, 3px) ;
+  }
+}
+
+
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  background-color: #222;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 30px;
+}
+

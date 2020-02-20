@@ -1,0 +1,19 @@
+<div class="topnav">
+  <img src="../assets/limehomelogodark-2.png">
+  <div class="menuIcon" [ngClass]="{'change': activeMenu==true}" (click)="activateMenu()">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+  </div>
+</div>
+
+<div class="overlay" [ngStyle]="{ 'width': activeMenu==true ? '100%' : '0%' }">
+  <a href="javascript:void(0)" class="closebtn" (click)="activateMenu()">&times;</a>
+  <div class="overlay-content">
+    <a href="#">Locations</a>
+    <a href="#">Bookings</a>
+  </div>
+</div>
+
+<app-map></app-map>
+
+<router-outlet></router-outlet>
