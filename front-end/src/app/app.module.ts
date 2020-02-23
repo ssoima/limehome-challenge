@@ -8,12 +8,14 @@ import { AgmCoreModule } from '@agm/core';
 import {DataService} from './data.service';
 import {HttpClientModule} from '@angular/common/http';
 import { PropertyCardComponent } from './property-card/property-card.component';
+import { PropertyCarouselComponent } from './property-carousel/property-carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
     PropertyCardComponent,
+    PropertyCarouselComponent,
   ],
   imports: [
     BrowserModule,

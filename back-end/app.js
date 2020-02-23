@@ -20,6 +20,20 @@ app.get("/properties", (req, res, next) => {
 
     request(query, { json: true }, (err, response, body) => {
         if (err) { return console.log(err); }
+        console.log(body.results);
+        console.log (body.results.map(place => {
+            return {
+                id: place.id,
+                name: place.name,
+                lat: place.geometry.location.lat,
+                lng: place.geometry.location.lng,
+                rating: place.rating,
+                photoUrl: ("https://maps.googleapis.com/maps/api/place/photo" +
+                    "?photoreference=" + place.photos[0].photo_reference +
+                    "&sensor=false&maxheight=2000&maxwidth=3000" +
+                    "&key=AIzaSyAxHCkGzQsG_MyX_Hyun5bY3U0_plw254A")
+            }
+        }));
         res.json(
             body.results
                 .filter(place => place.id != null

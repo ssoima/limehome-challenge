@@ -1,0 +1,8 @@
+<!--<div class="items" #slider>
+  <app-property-card *ngFor="let item of [1,2,3,4,5,6,7]"></app-property-card>
+</div> -->
+<div class="row">
+  <div class="card">
+    <app-property-card class="card" *ngFor="let property of (properties$ | async)" [property]="property"></app-property-card>
+  </div>
+</div>

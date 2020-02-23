@@ -3,47 +3,15 @@
   [longitude]="lng"
   [zoom]="zoom"
   [disableDefaultUI]="false"
-  [zoomControl]="false"
-  (mapClick)="mapClicked($event)">
+  [zoomControl]="false">
 
   <agm-marker
     *ngFor="let m of properties$ | async; let i = index"
     (markerClick)="clickedMarker(m.id)"
     [latitude]="m.lat"
     [longitude]="m.lng"
-    [iconUrl]="m.id == selectedPropertyId ? DARK_MARKER : LIGHT_MARKER">
-
-    <agm-info-window>
-      <strong>InfoWindow content</strong>
-    </agm-info-window>
-
+    [iconUrl]="m.id == (selectedPropertyId$.asObservable() | async)  ? DARK_MARKER : LIGHT_MARKER">
   </agm-marker>
-
-  <!--
-  <agm-marker
-      *ngFor="let m of markers; let i = index"
-      (markerClick)="clickedMarker($event, i)"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      [iconUrl]="{
-        url: '../../assets/house-light.svg',
-        scaledSize: {
-          width: 40,
-          height: 60
-        }
-      }">
-
-    <agm-info-window>
-      <strong>InfoWindow content</strong>
-    </agm-info-window>
-    
-  </agm-marker>
-  -->
-  <!--<agm-circle [latitude]="lat + 0.3" [longitude]="lng"
-      [radius]="5000"
-      [fillColor]="'red'"
-      [circleDraggable]="true"
-      [editable]="true">
-  </agm-circle>
--->
 </agm-map>
+
+<app-property-carousel [properties$]="properties$" [selectedPropertyId$]="selectedPropertyId$"></app-property-carousel>

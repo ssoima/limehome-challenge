@@ -1,1 +1,36 @@
-<p>property-card works!</p>
+<div class="card">
+  <!--<img class="center-cropped" src="../../assets/place_dummy_image.jpg">
+  -->
+  <div class="upper-container">
+    <img class="center-cropped" src="../../assets/place_dummy_image.jpg">
+    <div class="upper-right-container">
+      <p style="margin:0;"><b>{{getTruncatedTitle()}}</b></p>
+      <p style="color: #BABABA; font-size: 10px">3,4 KM FROM THE CITY CENTER</p>
+      <p style="position: absolute; margin: 0; bottom: 0; font-size: 30px">100€</p>
+    </div>
+  </div>
+  <div class="lower-container">
+  <button class="button" (click)="switchModal()"> Book </button>
+  </div>
+  <div>
+  </div>
+</div>
+
+<div *ngIf="isCreatingReservation" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" (click)="switchModal()">&times;</span>
+    <label for="start">Start date: </label>
+    <input type="date" id="start" name="trip-start"
+           min="{{currentDate()}}" max="{{maxDate()}}">
+  <br>
+    <label for="end">End date: </label>
+    <input type="date" id="end" name="trip-end"
+           min="{{currentDate()}}" max="{{maxDate()}}">
+    <div style="height:40px"></div>
+    <button class="button" (click)="switchModal()"> Book </button>
+
+  </div>
+
+</div>
