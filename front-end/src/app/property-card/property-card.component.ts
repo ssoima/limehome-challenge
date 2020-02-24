@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Property} from '../data.service';
+import {DataService, Property} from '../data.service';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-property-card',
@@ -7,9 +9,12 @@ import {Property} from '../data.service';
   styleUrls: ['./property-card.component.scss']
 })
 export class PropertyCardComponent implements OnInit {
-  @Input() private property: Property;
-  isCreatingReservation = false;
-  constructor() { }
+  @Input() property: Property;
+   isCreatingReservation = false;
+   reservationStartDate: Date;
+   reservationEndDate: Date;
+
+  constructor(private dataService: DataService ) {}
 
   ngOnInit(): void {
   }
@@ -40,5 +45,19 @@ export class PropertyCardComponent implements OnInit {
   maxDate() {
     const currentDate = this.currentDate();
     return new Date(currentDate.getFullYear() + 1, currentDate.getMonth(), 28);
+  }
+
+  sendBooking() {
+    this.dataService.createBooking(this.property.id, this.reservationStartDate, this.reservationEndDate)
+      .then(res => {
+        console.log(res);
+      });
+  }
+
+  parseDate(dateString: string): Date {
+    if (dateString) {
+      return new Date(dateString);
+    }
+    return null;
   }
 }

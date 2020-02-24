@@ -9,6 +9,7 @@ import {DataService} from './data.service';
 import {HttpClientModule} from '@angular/common/http';
 import { PropertyCardComponent } from './property-card/property-card.component';
 import { PropertyCarouselComponent } from './property-carousel/property-carousel.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PropertyCarouselComponent } from './property-carousel/property-carousel
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAxHCkGzQsG_MyX_Hyun5bY3U0_plw254A'
     }),
+    FormsModule,
   ],
   providers: [ DataService ],
   bootstrap: [AppComponent]

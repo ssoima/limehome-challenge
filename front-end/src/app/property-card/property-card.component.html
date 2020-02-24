@@ -23,13 +23,17 @@
     <span class="close" (click)="switchModal()">&times;</span>
     <label for="start">Start date: </label>
     <input type="date" id="start" name="trip-start"
-           min="{{currentDate()}}" max="{{maxDate()}}">
+           min="{{currentDate()}}" max="{{maxDate()}}"
+           [ngModel]="reservationStartDate | date:'yyyy-MM-dd'"
+           (ngModelChange)="reservationStartDate = $event">
   <br>
     <label for="end">End date: </label>
     <input type="date" id="end" name="trip-end"
-           min="{{currentDate()}}" max="{{maxDate()}}">
+           min="{{currentDate()}}" max="{{maxDate()}}"
+           [ngModel]="reservationEndDate | date:'yyyy-MM-dd'"
+           (ngModelChange)="reservationEndDate = $event">
     <div style="height:40px"></div>
-    <button class="button" (click)="switchModal()"> Book </button>
+    <button class="button" (click)="sendBooking()"> Book </button>
 
   </div>
 
