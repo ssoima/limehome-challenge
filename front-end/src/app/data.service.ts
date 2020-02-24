@@ -8,8 +8,11 @@ import {BehaviorSubject, Observable} from 'rxjs';
 export class DataService {
 
   private static URL = 'http://127.0.0.1:3000';
+  private selectedPropertyId$: BehaviorSubject<string>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.selectedPropertyId$ = new BehaviorSubject<string>(null);
+  }
 
   getProperties$(lat: number, lng: number): Observable<Property[]> {
     return new BehaviorSubject<Property[]>(bla).asObservable();
@@ -27,6 +30,15 @@ export class DataService {
     console.log(req);
     return req.json();
   }
+
+  getSelectedPropertyId(): Observable<string> {
+    return this.selectedPropertyId$.asObservable();
+  }
+
+  updateSelectedPropertyId(id: string ) {
+    this.selectedPropertyId$.next(id);
+  }
+
 }
 
 export interface Property {

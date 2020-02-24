@@ -10,8 +10,8 @@
     (markerClick)="clickedMarker(m.id)"
     [latitude]="m.lat"
     [longitude]="m.lng"
-    [iconUrl]="m.id == (selectedPropertyId$.asObservable() | async)  ? DARK_MARKER : LIGHT_MARKER">
+    [iconUrl]="m.id == (selectedPropertyId$ | async)  ? DARK_MARKER : LIGHT_MARKER">
   </agm-marker>
 </agm-map>
 
-<app-property-carousel [properties$]="properties$" [selectedPropertyId$]="selectedPropertyId$"></app-property-carousel>
+<app-property-carousel [properties$]="properties$"></app-property-carousel>
