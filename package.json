@@ -2,7 +2,7 @@
   "name": "limeHome-Challenge",
   "version": "0.0.0",
   "scripts": {
-    "build": "cd front-end && npm install && npm run build && cd ../back-end && npm install",
+    "build": "cd front-end && npm install && node front-end/scripts/create-env-variable.js && npm run build && cd ../back-end && npm install",
     "start": "cd back-end && npm start",
     "heroku-postbuild": "npm run build"
   },
