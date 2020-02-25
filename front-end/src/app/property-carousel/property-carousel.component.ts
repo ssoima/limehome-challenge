@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {DataService, Property} from '../data.service';
-import {PropertyCardComponent} from "../property-card/property-card.component";
+import {PropertyCardComponent} from '../property-card/property-card.component';
 
 @Component({
   selector: 'app-property-carousel',
@@ -34,13 +34,4 @@ export class PropertyCarouselComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-  animate() {
-    // this.slides.toArray()[this.index].nativeElement.scrollIntoView({behavior: 'smooth'});
-  }
-  getSlides() {
-    console.log(this.slides);
-  }
-
-
 }

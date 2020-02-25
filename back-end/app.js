@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require('cors');
 const request = require('request');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 var bookings = [];
@@ -9,8 +10,8 @@ var bookings = [];
 var GOOGLE_PLACES_API_KEY = "AIzaSyAxHCkGzQsG_MyX_Hyun5bY3U0_plw254A";
 
 app.use(cors());
-
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/../front-end/dist/front-end'));
 
 //Returns the property around Lat/Lon
 // Endpoint: properties?at=LAT,LONG
@@ -99,6 +100,10 @@ app.get("/properties/:property_id/bookings", (req, res, next) => {
     return res.json(bookings.filter(booking => booking.id === req.params.property_id));
 });
 
+app.get('/*', function(req,res) {
+    console.log(__dirname);
+    res.sendFile(path.join(__dirname + '/../front-end/dist/front-end/index.html'));
+});
 
 app.listen(3000, () => {
     console.log("Server running on port 3000");
