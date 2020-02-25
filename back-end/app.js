@@ -3,6 +3,7 @@ const cors = require('cors');
 const request = require('request');
 const bodyParser = require('body-parser');
 const path = require('path');
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 var bookings = [];
@@ -12,6 +13,7 @@ var GOOGLE_PLACES_API_KEY = "AIzaSyAxHCkGzQsG_MyX_Hyun5bY3U0_plw254A";
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../front-end/dist/front-end'));
+
 
 //Returns the property around Lat/Lon
 // Endpoint: properties?at=LAT,LONG
@@ -105,6 +107,6 @@ app.get('/*', function(req,res) {
     res.sendFile(path.join(__dirname + '/../front-end/dist/front-end/index.html'));
 });
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+app.listen(PORT, () => {
+    console.log("Server running on port " + PORT);
 });
