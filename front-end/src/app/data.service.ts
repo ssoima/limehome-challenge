@@ -17,7 +17,6 @@ export class DataService {
     this.selectedPropertyId$ = new BehaviorSubject<string>(null);
     this.__properties$ = new BehaviorSubject<Property[]>(null);
     this.__bookings$ = new BehaviorSubject<any>(null);
-
   }
 
   queryProperties(lat: number, lng: number) {
