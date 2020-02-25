@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/../front-end/dist/front-end'));
 
 //Returns the property around Lat/Lon
 // Endpoint: properties?at=LAT,LONG
-app.get("/properties", (req, res, next) => {
+app.get("/api/properties", (req, res, next) => {
     query = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
         "?location=" + req.query.at +
         "&radius=3000" +
@@ -71,7 +71,7 @@ app.get("/bookings", (req, res, next) => {
 });
 
 //Creates a booking for a property
-app.post("/bookings", (req, res, next) => {
+app.post("/api/bookings", (req, res, next) => {
     if (req.body.id != null && req.body.start != null && req.body.end != null) {
         let newBooking = { id: req.body.id, start: new Date(req.body.start), end: new Date(req.body.end)};
         for (const booking of bookings) {
@@ -98,7 +98,7 @@ app.post("/bookings", (req, res, next) => {
 
 // Returns the bookings for a property
 // Endpoint:
-app.get("/properties/:property_id/bookings", (req, res, next) => {
+app.get("/api/properties/:property_id/bookings", (req, res, next) => {
     return res.json(bookings.filter(booking => booking.id === req.params.property_id));
 });
 

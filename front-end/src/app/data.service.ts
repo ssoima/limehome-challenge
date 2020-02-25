@@ -21,7 +21,7 @@ export class DataService {
 
   queryProperties(lat: number, lng: number) {
     // return new BehaviorSubject<Property[]>(bla).asObservable();
-    this.http.get<Property[]>(DataService.URL + '/properties?at=' + lat + ',' + lng)
+    this.http.get<Property[]>(DataService.URL + '/api/properties?at=' + lat + ',' + lng)
       .subscribe(value => this.__properties$.next(value));
   }
 
@@ -32,7 +32,7 @@ export class DataService {
   async createBooking(id, start, end): Promise<any> {
     const header = new Headers();
     header.append('Content-Type', 'application/json');
-    const req = await fetch(DataService.URL + '/bookings', {
+    const req = await fetch(DataService.URL + '/api/bookings', {
       method: 'POST',
       headers: header,
       body: JSON.stringify( {id, start, end} )
@@ -50,7 +50,7 @@ export class DataService {
   }
 
   queryBookings() {
-    this.http.get<any>(DataService.URL + '/bookings')
+    this.http.get<any>(DataService.URL + '/api/bookings')
       .subscribe(value => this.__bookings$.next(value));
   }
 

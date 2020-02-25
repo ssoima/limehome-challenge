@@ -6,7 +6,7 @@ import {BookingsComponent} from './bookings/bookings.component';
 
 const routes: Routes = [
   {path: '', component: MapComponent},
-  {path: 'userbookings', component: BookingsComponent},
+  {path: 'bookings', component: BookingsComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
