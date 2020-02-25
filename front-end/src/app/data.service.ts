@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 })
 export class DataService {
 
-  private static URL = environment.port === 3000 ? 'http://127.0.0.1:' + environment.port : 'http://limehome-challenge.herokuapp.com/';
+  private static URL = 'http://limehome-challenge.herokuapp.com/'; // For local development 'http://127.0.0.1:' + environment.port
   private selectedPropertyId$: BehaviorSubject<string>;
   private __properties$: BehaviorSubject<Property[]>;
   private __bookings$: BehaviorSubject<any>;
