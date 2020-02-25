@@ -10,14 +10,22 @@ export class DataService {
 
   private static URL = 'http://127.0.0.1:' + environment.port;
   private selectedPropertyId$: BehaviorSubject<string>;
+  private __properties$: BehaviorSubject<Property[]>;
 
   constructor(private http: HttpClient) {
     this.selectedPropertyId$ = new BehaviorSubject<string>(null);
+    this.__properties$ = new BehaviorSubject<Property[]>(null);
+
   }
 
-  getProperties$(lat: number, lng: number): Observable<Property[]> {
+  queryProperties$(lat: number, lng: number) {
     // return new BehaviorSubject<Property[]>(bla).asObservable();
-    return this.http.get<Property[]>(DataService.URL + '/properties?at=' + lat + ',' + lng);
+    this.http.get<Property[]>(DataService.URL + '/properties?at=' + lat + ',' + lng)
+      .subscribe(value => this.__properties$.next(value));
+  }
+
+  getProperties$(){
+    return this.__properties$.asObservable();
   }
 
   async createBooking(id, start, end): Promise<any> {

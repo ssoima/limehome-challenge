@@ -21,11 +21,12 @@ export class MapComponent implements OnInit {
   DARK_MARKER = { url: '../../assets/house-dark.svg', scaledSize: { width: 50, height: 50 } };
 
   constructor( private dataService: DataService) {
-    this.properties$ = dataService.getProperties$(this.lat, this.lng);
-    this.selectedPropertyId$ = this.dataService.getSelectedPropertyId();
   }
 
   ngOnInit(): void {
+    this.dataService.queryProperties$(this.lat, this.lng);
+    this.properties$ = this.dataService.getProperties$();
+    this.selectedPropertyId$ = this.dataService.getSelectedPropertyId();
   }
 
   clickedMarker(id: string) {

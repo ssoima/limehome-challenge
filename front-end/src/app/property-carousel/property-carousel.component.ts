@@ -10,15 +10,16 @@ import {PropertyCardComponent} from '../property-card/property-card.component';
 })
 export class PropertyCarouselComponent implements OnInit, AfterViewInit {
 
-  @Input() properties$: Observable<Property[]>;
+  properties$: Observable<Property[]>;
   selectedPropertyId$: Observable<string>;
   @ViewChildren('slide') slides: QueryList<ElementRef>;
 
   constructor(private dataService: DataService) {
-    this.selectedPropertyId$ = this.dataService.getSelectedPropertyId();
   }
 
   ngOnInit(): void {
+    this.selectedPropertyId$ = this.dataService.getSelectedPropertyId();
+    this.properties$ = this.dataService.getProperties$();
   }
 
   ngAfterViewInit(): void {
