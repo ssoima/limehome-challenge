@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { PropertyCardComponent } from './property-card/property-card.component';
 import { PropertyCarouselComponent } from './property-carousel/property-carousel.component';
 import {FormsModule} from '@angular/forms';
+import { BookingsComponent } from './bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {FormsModule} from '@angular/forms';
     MapComponent,
     PropertyCardComponent,
     PropertyCarouselComponent,
+    BookingsComponent,
   ],
   imports: [
     BrowserModule,

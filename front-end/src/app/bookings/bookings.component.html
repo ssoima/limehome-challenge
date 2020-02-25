@@ -1,0 +1,12 @@
+<table style="width:100%">
+  <tr>
+    <th>Property Id</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+  <tr *ngFor="let booking of (bookings$ | async)">
+    <td>{{booking.id.substring(0,9)}}...</td>
+    <td>{{booking.start.substring(0,9)}}</td>
+    <td>{{booking.end.substring(0,9)}}</td>
+  </tr>
+</table>

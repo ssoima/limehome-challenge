@@ -24,7 +24,7 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataService.queryProperties$(this.lat, this.lng);
+    this.dataService.queryProperties(this.lat, this.lng);
     this.properties$ = this.dataService.getProperties$();
     this.selectedPropertyId$ = this.dataService.getSelectedPropertyId();
   }
