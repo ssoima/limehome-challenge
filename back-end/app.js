@@ -66,7 +66,7 @@ app.get("/api/properties", (req, res, next) => {
 });
 
 // Used just for the demo, to get all bookings at once
-app.get("/bookings", (req, res, next) => {
+app.get("/api/bookings", (req, res, next) => {
     return res.json(bookings);
 });
 
